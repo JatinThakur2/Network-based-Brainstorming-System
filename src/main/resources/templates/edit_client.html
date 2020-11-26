@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Activity</title>
+    <link rel="shortcut icon" href="images/brain.png" type="image/png" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link  href="css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="alert alert-success text-center">
+    <strong>All Clients</strong>
+</div>
+<div class="container">
+    <h5>Edit Client Details</h5>
+    <form action="#" th:action="@{/client/addEdit}" method="post" th:object="${user}">
+        First Name:<br/>
+        <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="First Name"/>
+        <br/>
+        Last Name:<br/>
+        <input type="text" class="form-control" id="lastName" th:field="*{lastName}" placeholder="Last Name"/>
+        <br/>
+        Email:<br/>
+        <input type="text" class="form-control" id="email" th:field="*{email}"  placeholder="Email"/>
+        <br/>
+        <input type="hidden" id="id" th:field="*{id}">
+        <br/>
+        <button type="submit" class="btn btn-info">Submit</button>
+    </form>
+</div>
+</body>
+</html>

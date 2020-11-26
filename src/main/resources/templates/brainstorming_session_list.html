@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Brainstorming Session</title>
+    <link rel="shortcut icon" href="images/brain.png" type="image/png" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="alert alert-success text-center">
+    <strong>All Brainstorming Sessions</strong>
+</div>
+<div class="container">
+    <div style="text-align: right; margin-bottom: 5px;">
+        <a th:href="@{/session/add}" class="btn btn-success" role="button">+ Add Brainstorming Session</a>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Session Title</th>
+            <th>Session Date</th>
+            <th>Session Time</th>
+            <th>Session Link</th>
+            <th>Client 1</th>
+            <th>Client 2</th>
+            <th>Client 3</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ses : ${sessions}">
+            <td th:text="${ses.id}"></td>
+            <td th:text="${ses.title}"></td>
+            <td th:text="${ses.date}"></td>
+            <td th:text="${ses.time}"></td>
+            <td>
+                <a th:href="${ses.link}" target="_blank" class="btn btn-info btn-sm" role="button">Start Session</a>
+            </td>
+            <td th:text="${ses.client1}"></td>
+            <td th:text="${ses.client2}"></td>
+            <td th:text="${ses.client3}"></td>
+            <td>
+                <a th:href="@{/session/edit/{id}(id=${ses.id})}" class="btn btn-success btn-sm" role="button">Update</a>
+                <a th:href="@{/session/delete/{id}(id=${ses.id})}" class="btn btn-danger btn-sm" role="button">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

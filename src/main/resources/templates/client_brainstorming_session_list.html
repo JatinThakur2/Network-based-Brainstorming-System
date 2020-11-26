@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Brainstorming Session</title>
+    <link rel="shortcut icon" href="images/brain.png" type="image/png" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="alert alert-success text-center">
+    <strong>All Brainstorming Sessions</strong>
+</div>
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Session Title</th>
+            <th>Session Date</th>
+            <th>Session Time</th>
+            <th>Session Link</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="sesi : ${sessions}">
+            <td th:text="${sesi.id}"></td>
+            <td th:text="${sesi.title}"></td>
+            <td th:text="${sesi.date}"></td>
+            <td th:text="${sesi.time}"></td>
+            <td>
+                <a th:href="${sesi.link}" target="_blank" class="btn btn-info btn-sm" role="button">Join Session</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Spring Boot Thymeleaf example</title>
+  <link rel="shortcut icon" href="images/brain.png" type="image/png" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="alert alert-success text-center">
+  <strong>All Registered Client Details</strong>
+</div>
+<div class="container">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+<!--      <th>Action</th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="client : ${clients}">
+      <td th:text="${client.id}"></td>
+      <td th:text="${client.name}"></td>
+      <td th:text="${client.lastName}"></td>
+      <td th:text="${client.email}"></td>
+<!--      <td>-->
+<!--        <a th:href="@{/client/edit/{id}(id=${client.id})}" class="btn btn-success btn-sm" role="button">Update</a>-->
+<!--        <a th:href="@{/client/delete/{id}(id=${client.id})}" class="btn btn-danger btn-sm" role="button">Delete</a>-->
+<!--      </td>-->
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

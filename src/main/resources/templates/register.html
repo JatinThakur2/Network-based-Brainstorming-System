@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <link rel="stylesheet" href="css/css.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script type="text/javascript" src="js/js.js"></script>
+</head>
+
+<body class="body">
+  <div class="navbar">
+    <span style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776; </span>
+  </div>
+  <div id="main">
+    <br>
+    <img class="photo" src="images/1.png" width="80" height="80">
+    <h2 style="margin-left: 150px; margin-top: -80px;">Dashboard</h2>
+    <h6 style="margin-top: -20px; margin-left: 150px;">Admin Detail</h6>
+    <br>
+    <div id="table1">
+      <br>
+      <h5 class="box" >Register Client</h5>
+
+       <form autocomplete="off" th:action="@{/register}" th:object="${user}" method="post" role="form" class="form">
+
+                                  <div class="form-group formtext">
+                                    <label>First Name</label>
+                                    <input type="text" th:field="*{name}" class="form-control formtextbox" placeholder="First Name" required />
+                                  </div>
+
+                             
+                                <div class="form-group formtext">
+                                  <label>Last Name</label>
+                                  <input type="text" th:field="*{lastName}" class="form-control formtextbox" placeholder="Last Name" required />
+                                </div>
+                           
+                              
+                                <div class="form-group formtext">
+                                  <label>Client Email</label>
+                                  <input type="text" th:field="*{email}" class="form-control formtextbox" placeholder="Email" required />
+                                </div>
+                                <div class="form-group formtext">
+                                  <label>Client Password</label>
+                                  <input type="password" th:field="*{password}" class="form-control formtextbox" placeholder="Password" required />
+                                </div>
+      
+        <br>
+        <button type="submit" class="button button1">Save</button>
+  <div class="text-center">
+                    <span style="font-size: 20px; color: #1c7430" th:utext="${successMessage}"></span>
+                  </div>
+
+                  <div class="alert alert-success alert-dismissible col-sm-12"
+                       th:if="${(bindingResult != null && bindingResult.getAllErrors() != null)}">
+                    <button type="button" class="close" data-dismiss="alert"
+                            aria-hidden="true">×</button>
+                    <ul th:each="data : ${bindingResult.getAllErrors()}">
+                      <li th:text="${data.getObjectName() + ' :: ' + data.getDefaultMessage()}"></li>
+                       </ul>
+                       </div>
+      </form>
+      <br>
+      <br>
+     
+     
+ 
+   
+      <script src="js/js.js" type="text/javascript"></script>
+    </div>
+
+   
+    <br>
+
+
+  </div>
+  </div>
+
+
+  <div id="mySidenav" class="sidenav">
+    <a href="/Admin-Dashboard">Dashboard</a>
+   <a href="/session/list">Brainstorming Session</a>
+    <a href="/admin/activity/list">Client Activities</a>
+   <a href="/client/list">Client Details</a>
+    <a href="/register">Register Client</a>
+ 
+    <a href="login">Logout</a>
+  </div>
+</body>
+
+</html>
